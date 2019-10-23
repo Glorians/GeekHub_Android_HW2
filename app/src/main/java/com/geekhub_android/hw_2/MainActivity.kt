@@ -9,28 +9,28 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    val NUMBER = 5;
+    val NUMBER = 1;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
 
-    fun clickSentResult (view: View) {
-        val a: Int = num1.text.toString().toInt();
-        val b: Int = num2.text.toString().toInt();
-
-        val resultActivity = Intent(this, ResultActivity::class.java)
-        val result: Int = a+b;
-
-        startActivityForResult(resultActivity, NUMBER)
-
+    //TODO ClickEdit
+    fun onClickEdit (view: View) {
+        val intent = Intent(this, Edit_text::class.java)
+        startActivityForResult(intent, NUMBER)
     }
 
-    override  fun onActivityResult (requestCode: Int, resultCode: Int, data: Intent?) {
+    //TODO ActivityResult
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == NUMBER && resultCode == Activity.RESULT_OK) {
-            data?.hasExtra("")
+            if (data != null) {
+                text_header.text = (data.getStringExtra("header"))
+                main_text.text = data.getStringExtra("main_text")
+            }
         }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
 

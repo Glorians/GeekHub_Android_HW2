@@ -2,6 +2,7 @@ package com.geekhub_android.hw_2
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -31,6 +32,13 @@ class MainActivity : AppCompatActivity() {
             }
         }
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    fun onClickSend (view: View) {
+        val intent = Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:"))
+        intent.putExtra(Intent.EXTRA_SUBJECT, text_header.text.toString())
+        intent.putExtra(Intent.EXTRA_TEXT, main_text.text.toString())
+        startActivity(Intent.createChooser(intent, "hello, world"))
     }
 
 

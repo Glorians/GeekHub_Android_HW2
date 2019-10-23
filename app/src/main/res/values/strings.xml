@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">HW_2</string>
+    <string name="activity_main_text_header">Калькулятор</string>
+    <string name="activity_main_btn_sent_result_activity_two">Отправить результат на 2 Activity</string>
+</resources>
